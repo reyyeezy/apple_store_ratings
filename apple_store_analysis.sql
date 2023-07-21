@@ -40,11 +40,18 @@ FROM AppleStore
 GROUP by prime_genre
 ORder BY NumApps DESC
 
---Get an overview of the app' ratings
+--Get an overview of the app's ratings
 SELECT min(user_rating) AS MinRating,
 		max(user_rating) AS MaxRating,
         avg(user_rating) AS AvgRating
 FROM AppleStore
+
+-- Get an overview of the app's price
+SELECT  DISTINCT price
+FROM AppleStore
+WHERE price > 0
+ORDER By price
+Limit 10
 
 **Data Analysis**
 
@@ -57,6 +64,16 @@ SELECT CASE
          avg(user_rating) AS Avg_Rating
 FROM AppleStore
 GROUP BY App_Type
+
+--Determine what paid app price has the better ratings
+SELECT CASE
+            WHEN price = 0.99 THEN 'Cheap'
+            WHEN price BETWEEN 1 AND 3.99 THEN 'Fair'
+            ELSE 'Expensive'
+        END AS app_price,
+        AVG(user_rating) AS Avg_rating
+FROM AppleStore
+GROUP BY app_price;
 
 -- Check if apps with more supported languages have higher ratingsAppleStore
 
