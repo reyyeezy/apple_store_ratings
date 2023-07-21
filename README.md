@@ -16,4 +16,6 @@ We'll be working with two tables containing Apple Store App information and App 
 
 
 ### Skills
-* 
+* Data Manipulation with UNION ALL
+* Exploratory Data Analysis
+* Window Functions
